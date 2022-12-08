@@ -153,6 +153,7 @@ class PDFLib{
             if($this->gs_command == "gswin32c.exe" || $this->gs_command == "gswin64c.exe"){
                 $this->pdf_path = str_replace('\\', '/', $this->pdf_path);
             }
+            $gs_version = $this->getGSVersion();
             if($gs_version >= 9.50){
                 $pages = $this->executeGS('-q -dNOSAFER -c "('.$this->pdf_path.') (r) file runpdfbegin pdfpagecount = quit"',true);
             }
